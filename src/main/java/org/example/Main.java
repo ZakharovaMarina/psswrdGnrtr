@@ -7,22 +7,22 @@ import java.security.SecureRandom;
 import java.util.Scanner;
 
 /**
- * Класс Main выполняет роль точки входа для программы
+ * РљР»Р°СЃСЃ Main РІС‹РїРѕР»РЅСЏРµС‚ СЂРѕР»СЊ С‚РѕС‡РєРё РІС…РѕРґР° РґР»СЏ РїСЂРѕРіСЂР°РјРјС‹
  */
 public class Main {
     private static final Logger logger = LogManager.getLogger();
     private static final String ENG = "abcdefghijklmnopqrstuvwxyz";
-    private static final String RUS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+    private static final String RUS = "Р°Р±РІРіРґРµС‘Р¶Р·РёР№РєР»РјРЅРѕРїСЂСЃС‚СѓС„С…С†С‡С€С‰СЉС‹СЊСЌСЋСЏ";
     private static final String SP_CHARS = "!@#$%^&*()_-+=<>?";
 
     /**
-     * Главный метод программы. Запрашивает у пользователя условия для генерации пароля и
-     * выводит сгенерированный пароль и время его генерации.
+     * Р“Р»Р°РІРЅС‹Р№ РјРµС‚РѕРґ РїСЂРѕРіСЂР°РјРјС‹. Р—Р°РїСЂР°С€РёРІР°РµС‚ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СѓСЃР»РѕРІРёСЏ РґР»СЏ РіРµРЅРµСЂР°С†РёРё РїР°СЂРѕР»СЏ Рё
+     * РІС‹РІРѕРґРёС‚ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ РїР°СЂРѕР»СЊ Рё РІСЂРµРјСЏ РµРіРѕ РіРµРЅРµСЂР°С†РёРё.
      *
-     * @param args массив аргументов командной строки, переданных при запуске программы
+     * @param args РјР°СЃСЃРёРІ Р°СЂРіСѓРјРµРЅС‚РѕРІ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё, РїРµСЂРµРґР°РЅРЅС‹С… РїСЂРё Р·Р°РїСѓСЃРєРµ РїСЂРѕРіСЂР°РјРјС‹
      */
     public static void main(String[] args) {
-        logger.info("Запуск программы");
+        logger.info("Р—Р°РїСѓСЃРє РїСЂРѕРіСЂР°РјРјС‹");
         Scanner scanner = new Scanner(System.in);
         int length;
         int languageCount;
@@ -30,69 +30,69 @@ public class Main {
         boolean includeDigits;
         boolean useSpChars;
         String customDigits = "";
-        // Ввод условий с консоли
+        // Р’РІРѕРґ СѓСЃР»РѕРІРёР№ СЃ РєРѕРЅСЃРѕР»Рё
         while (true) {
             try {
-                System.out.print("Введите длину пароля: ");
+                System.out.print("Р’РІРµРґРёС‚Рµ РґР»РёРЅСѓ РїР°СЂРѕР»СЏ: ");
                 length = Integer.parseInt(scanner.nextLine());
                 if (length <= 0) {
                     throw new IllegalArgumentException();
                 } else {
-                    logger.info("Принято значение переменной length");
+                    logger.info("РџСЂРёРЅСЏС‚Рѕ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ length");
                 }
 
-                System.out.print("Введите количество языков (1 или 2): ");
+                System.out.print("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЏР·С‹РєРѕРІ (1 РёР»Рё 2): ");
                 languageCount = Integer.parseInt(scanner.nextLine());
                 if (languageCount != 1 && languageCount != 2) {
                     throw new IllegalArgumentException();
                 } else {
-                    logger.info("Принято значение переменной languageCount");
+                    logger.info("РџСЂРёРЅСЏС‚Рѕ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ languageCount");
                 }
 
-                System.out.print("Использовать разный регистр (true/false): ");
+                System.out.print("РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЂР°Р·РЅС‹Р№ СЂРµРіРёСЃС‚СЂ (true/false): ");
                 useDifferentCase = Boolean.parseBoolean(scanner.nextLine());
-                logger.info("Принято значение useDifferentCase");
+                logger.info("РџСЂРёРЅСЏС‚Рѕ Р·РЅР°С‡РµРЅРёРµ useDifferentCase");
 
-                System.out.print("Включать цифры (true/false): ");
+                System.out.print("Р’РєР»СЋС‡Р°С‚СЊ С†РёС„СЂС‹ (true/false): ");
                 includeDigits = Boolean.parseBoolean(scanner.nextLine());
                 if (includeDigits) {
-                    System.out.print("Введите список цифр, которые хотите использовать: ");
+                    System.out.print("Р’РІРµРґРёС‚Рµ СЃРїРёСЃРѕРє С†РёС„СЂ, РєРѕС‚РѕСЂС‹Рµ С…РѕС‚РёС‚Рµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ: ");
                     customDigits = scanner.nextLine();
-                    //проверка того, состоит ли вся принятая строка из цифр
+                    //РїСЂРѕРІРµСЂРєР° С‚РѕРіРѕ, СЃРѕСЃС‚РѕРёС‚ Р»Рё РІСЃСЏ РїСЂРёРЅСЏС‚Р°СЏ СЃС‚СЂРѕРєР° РёР· С†РёС„СЂ
                     if (customDigits.matches("\\d+")) {
-                        logger.info("Приняты пользовательские цифры");
+                        logger.info("РџСЂРёРЅСЏС‚С‹ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ С†РёС„СЂС‹");
                     } else {
                         throw new IllegalArgumentException();
                     }
                 }
 
-                System.out.print("Включать специальные символы (true/false): ");
+                System.out.print("Р’РєР»СЋС‡Р°С‚СЊ СЃРїРµС†РёР°Р»СЊРЅС‹Рµ СЃРёРјРІРѕР»С‹ (true/false): ");
                 useSpChars = Boolean.parseBoolean(scanner.nextLine());
-                logger.info("Принято значение useSpChars");
+                logger.info("РџСЂРёРЅСЏС‚Рѕ Р·РЅР°С‡РµРЅРёРµ useSpChars");
 
                 break;
             } catch (IllegalArgumentException e) {
-                logger.info("Некорректный ввод. Пожалуйста, попробуйте снова.");
+                logger.info("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°.");
             }
         }
-        logger.info("Запуск секундомера");
+        logger.info("Р—Р°РїСѓСЃРє СЃРµРєСѓРЅРґРѕРјРµСЂР°");
         long startTime = System.currentTimeMillis();
-        // Генерация пароля
+        // Р“РµРЅРµСЂР°С†РёСЏ РїР°СЂРѕР»СЏ
         String password = generatePassword(length, languageCount, useDifferentCase, includeDigits, useSpChars, customDigits);
-        logger.info("Финиш секундомера");
+        logger.info("Р¤РёРЅРёС€ СЃРµРєСѓРЅРґРѕРјРµСЂР°");
         long endTime = System.currentTimeMillis();
         long executionTime = endTime - startTime;
-        logger.info("Время генерации пароля: " + executionTime + " миллисекунд");
-        System.out.println("Сгенерированный пароль: " + password);
+        logger.info("Р’СЂРµРјСЏ РіРµРЅРµСЂР°С†РёРё РїР°СЂРѕР»СЏ: " + executionTime + " РјРёР»Р»РёСЃРµРєСѓРЅРґ");
+        System.out.println("РЎРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ РїР°СЂРѕР»СЊ: " + password);
     }
 
     /**
-     * Генерирует строку символов на основе количества языков, использования специальных символов и разных регистров.
+     * Р“РµРЅРµСЂРёСЂСѓРµС‚ СЃС‚СЂРѕРєСѓ СЃРёРјРІРѕР»РѕРІ РЅР° РѕСЃРЅРѕРІРµ РєРѕР»РёС‡РµСЃС‚РІР° СЏР·С‹РєРѕРІ, РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ СЃРїРµС†РёР°Р»СЊРЅС‹С… СЃРёРјРІРѕР»РѕРІ Рё СЂР°Р·РЅС‹С… СЂРµРіРёСЃС‚СЂРѕРІ.
      *
-     * @param languageCount    количество используемых языков (при languageCount = 1 используется английский)
-     * @param useSpChars       флаг, указывающий, нужно ли использовать специальные символы
-     * @param useDifferentCase флаг, указывающий, нужно ли использовать разный регистр (при useDifferentCase = false используется нижний регистр)
-     * @return созданная строка символов, которые могут войти в пароль
+     * @param languageCount    РєРѕР»РёС‡РµСЃС‚РІРѕ РёСЃРїРѕР»СЊР·СѓРµРјС‹С… СЏР·С‹РєРѕРІ (РїСЂРё languageCount = 1 РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ Р°РЅРіР»РёР№СЃРєРёР№)
+     * @param useSpChars       С„Р»Р°Рі, СѓРєР°Р·С‹РІР°СЋС‰РёР№, РЅСѓР¶РЅРѕ Р»Рё РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЃРїРµС†РёР°Р»СЊРЅС‹Рµ СЃРёРјРІРѕР»С‹
+     * @param useDifferentCase С„Р»Р°Рі, СѓРєР°Р·С‹РІР°СЋС‰РёР№, РЅСѓР¶РЅРѕ Р»Рё РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЂР°Р·РЅС‹Р№ СЂРµРіРёСЃС‚СЂ (РїСЂРё useDifferentCase = false РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РЅРёР¶РЅРёР№ СЂРµРіРёСЃС‚СЂ)
+     * @return СЃРѕР·РґР°РЅРЅР°СЏ СЃС‚СЂРѕРєР° СЃРёРјРІРѕР»РѕРІ, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ РІРѕР№С‚Рё РІ РїР°СЂРѕР»СЊ
      */
     private static String getCharacters(int languageCount, boolean useSpChars, boolean useDifferentCase) {
         String characters = "";
@@ -110,16 +110,16 @@ public class Main {
         if (useSpChars) {
             characters += SP_CHARS;
         }
-        logger.info("Создана строка символов characters, которые могут войти в пароль");
+        logger.info("РЎРѕР·РґР°РЅР° СЃС‚СЂРѕРєР° СЃРёРјРІРѕР»РѕРІ characters, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ РІРѕР№С‚Рё РІ РїР°СЂРѕР»СЊ");
         return characters;
     }
 
     /**
-     * Метод для вставки пользовательских цифр в пароль, если включено их добавление.
+     * РњРµС‚РѕРґ РґР»СЏ РІСЃС‚Р°РІРєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёС… С†РёС„СЂ РІ РїР°СЂРѕР»СЊ, РµСЃР»Рё РІРєР»СЋС‡РµРЅРѕ РёС… РґРѕР±Р°РІР»РµРЅРёРµ.
      *
-     * @param includeDigits   флаг, указывающий, нужно ли вставлять цифры
-     * @param customDigits    строка с пользовательскими цифрами
-     * @param passwordBuilder объект StringBuilder, представляющий пароль
+     * @param includeDigits   С„Р»Р°Рі, СѓРєР°Р·С‹РІР°СЋС‰РёР№, РЅСѓР¶РЅРѕ Р»Рё РІСЃС‚Р°РІР»СЏС‚СЊ С†РёС„СЂС‹
+     * @param customDigits    СЃС‚СЂРѕРєР° СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРјРё С†РёС„СЂР°РјРё
+     * @param passwordBuilder РѕР±СЉРµРєС‚ StringBuilder, РїСЂРµРґСЃС‚Р°РІР»СЏСЋС‰РёР№ РїР°СЂРѕР»СЊ
      */
     private static void insertCustomDigits(boolean includeDigits, String customDigits, StringBuilder passwordBuilder) {
         if (includeDigits) {
@@ -128,16 +128,16 @@ public class Main {
                 int index = random.nextInt(passwordBuilder.length() + 1);
                 passwordBuilder.insert(index, customDigits.charAt(i));
             }
-            logger.info("Вставлены пользовательские цифры");
+            logger.info("Р’СЃС‚Р°РІР»РµРЅС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ С†РёС„СЂС‹");
         }
     }
 
     /**
-     * Метод для вставки случайных символов из предоставленной строки characters в passwordBuilder, указанной длины length.
+     * РњРµС‚РѕРґ РґР»СЏ РІСЃС‚Р°РІРєРё СЃР»СѓС‡Р°Р№РЅС‹С… СЃРёРјРІРѕР»РѕРІ РёР· РїСЂРµРґРѕСЃС‚Р°РІР»РµРЅРЅРѕР№ СЃС‚СЂРѕРєРё characters РІ passwordBuilder, СѓРєР°Р·Р°РЅРЅРѕР№ РґР»РёРЅС‹ length.
      *
-     * @param characters      строка символов, которые могут войти в пароль
-     * @param length          длина генерируемого пароля
-     * @param passwordBuilder объект StringBuilder, представляющий пароль
+     * @param characters      СЃС‚СЂРѕРєР° СЃРёРјРІРѕР»РѕРІ, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ РІРѕР№С‚Рё РІ РїР°СЂРѕР»СЊ
+     * @param length          РґР»РёРЅР° РіРµРЅРµСЂРёСЂСѓРµРјРѕРіРѕ РїР°СЂРѕР»СЏ
+     * @param passwordBuilder РѕР±СЉРµРєС‚ StringBuilder, РїСЂРµРґСЃС‚Р°РІР»СЏСЋС‰РёР№ РїР°СЂРѕР»СЊ
      */
     private static void insertCharacters(String characters, int length, StringBuilder passwordBuilder) {
         SecureRandom random = new SecureRandom();
@@ -145,27 +145,27 @@ public class Main {
             int index = random.nextInt(characters.length());
             passwordBuilder.insert(random.nextInt(passwordBuilder.length() + 1), characters.charAt(index));
         }
-        logger.info("Вставлены случайные символы из строки characters");
+        logger.info("Р’СЃС‚Р°РІР»РµРЅС‹ СЃР»СѓС‡Р°Р№РЅС‹Рµ СЃРёРјРІРѕР»С‹ РёР· СЃС‚СЂРѕРєРё characters");
     }
 
     /**
-     * Генерирует пароль заданной длины, используя определенные параметры.
+     * Р“РµРЅРµСЂРёСЂСѓРµС‚ РїР°СЂРѕР»СЊ Р·Р°РґР°РЅРЅРѕР№ РґР»РёРЅС‹, РёСЃРїРѕР»СЊР·СѓСЏ РѕРїСЂРµРґРµР»РµРЅРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹.
      *
-     * @param length           длина генерируемого пароля
-     * @param languageCount    количество используемых языков
-     * @param useDifferentCase флаг, указывающий, нужно ли использовать разный регистр
-     * @param includeDigits    флаг, указывающий, нужно ли вставлять цифры
-     * @param useSpChars       флаг, указывающий, нужно ли использовать специальные символы
-     * @param customDigits     строка с пользовательскими цифрами
-     * @return сгенерированный пароль
+     * @param length           РґР»РёРЅР° РіРµРЅРµСЂРёСЂСѓРµРјРѕРіРѕ РїР°СЂРѕР»СЏ
+     * @param languageCount    РєРѕР»РёС‡РµСЃС‚РІРѕ РёСЃРїРѕР»СЊР·СѓРµРјС‹С… СЏР·С‹РєРѕРІ
+     * @param useDifferentCase С„Р»Р°Рі, СѓРєР°Р·С‹РІР°СЋС‰РёР№, РЅСѓР¶РЅРѕ Р»Рё РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЂР°Р·РЅС‹Р№ СЂРµРіРёСЃС‚СЂ
+     * @param includeDigits    С„Р»Р°Рі, СѓРєР°Р·С‹РІР°СЋС‰РёР№, РЅСѓР¶РЅРѕ Р»Рё РІСЃС‚Р°РІР»СЏС‚СЊ С†РёС„СЂС‹
+     * @param useSpChars       С„Р»Р°Рі, СѓРєР°Р·С‹РІР°СЋС‰РёР№, РЅСѓР¶РЅРѕ Р»Рё РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЃРїРµС†РёР°Р»СЊРЅС‹Рµ СЃРёРјРІРѕР»С‹
+     * @param customDigits     СЃС‚СЂРѕРєР° СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРјРё С†РёС„СЂР°РјРё
+     * @return СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ РїР°СЂРѕР»СЊ
      */
     private static String generatePassword(int length, int languageCount, boolean useDifferentCase, boolean includeDigits, boolean useSpChars, String customDigits) {
-        logger.info("Генерация пароля");
+        logger.info("Р“РµРЅРµСЂР°С†РёСЏ РїР°СЂРѕР»СЏ");
         StringBuilder passwordBuilder = new StringBuilder(length);
         String characters = getCharacters(languageCount, useSpChars, useDifferentCase);
         insertCustomDigits(includeDigits, customDigits, passwordBuilder);
         insertCharacters(characters, length - customDigits.length(), passwordBuilder);
-        logger.info("Пароль сгенерирован");
+        logger.info("РџР°СЂРѕР»СЊ СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅ");
         return passwordBuilder.toString();
     }
 }
